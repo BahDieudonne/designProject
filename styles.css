@@ -8,8 +8,9 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f5f5f5;
+    color: #2d3748;
+    background: #f7fafc;
+    min-height: 100vh;
 }
 
 /* Login Page Styles */
@@ -18,17 +19,32 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #059669 100%);
+    background: url('background/back1.JPG') center center / cover no-repeat;
+    position: relative;
     padding: 20px;
 }
 
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(76, 110, 50, 0.85);
+    backdrop-filter: blur(2px);
+}
+
 .login-box {
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
     max-width: 450px;
     width: 100%;
     padding: 40px;
+    position: relative;
+    z-index: 1;
+    border: 2px solid rgba(139, 172, 71, 0.3);
 }
 
 .login-header {
@@ -37,26 +53,23 @@ body {
 }
 
 .logo-circle {
-    width: 80px;
-    height: 80px;
-    background: #2563eb;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px;
-    color: white;
-}
+    img{
+     height: 11em;
+     width: 11em;
+     filter: drop-shadow(0 0 1px green)
+             drop-shadow(0 0 1px green);
+    }
+ }
 
 .login-header h1 {
     font-size: 24px;
     font-weight: 700;
-    color: #1f2937;
+    color: #2d5016;
     margin-bottom: 8px;
 }
 
 .subtitle {
-    color: #6b7280;
+    color: #4c6e32;
     font-size: 14px;
     margin-bottom: 16px;
 }
@@ -71,7 +84,7 @@ body {
 }
 
 .secure-badge svg {
-    color: #6b7280;
+    color: #8bac47;
 }
 
 .login-form {
@@ -86,7 +99,7 @@ body {
     display: block;
     font-size: 14px;
     font-weight: 600;
-    color: #374151;
+    color: #2d5016;
     margin-bottom: 8px;
 }
 
@@ -94,14 +107,15 @@ body {
     width: 100%;
     padding: 12px 16px;
     border: 2px solid #d1d5db;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 14px;
     transition: all 0.3s;
 }
 
 .form-group input:focus {
     outline: none;
-    border-color: #2563eb;
+    border-color: #8bac47;
+    box-shadow: 0 0 0 3px rgba(139, 172, 71, 0.1);
 }
 
 .password-input {
@@ -123,12 +137,12 @@ body {
 }
 
 .toggle-password:hover {
-    color: #374151;
+    color: #2d3748;
 }
 
 .error-message {
-    background: #fef2f2;
-    border-left: 4px solid #ef4444;
+    background: #fff5f5;
+    border-left: 4px solid #fc8181;
     padding: 12px;
     border-radius: 8px;
     display: flex;
@@ -138,12 +152,12 @@ body {
 }
 
 .error-message svg {
-    color: #ef4444;
+    color: #fc8181;
     flex-shrink: 0;
 }
 
 .error-message span {
-    color: #b91c1c;
+    color: #c53030;
     font-size: 14px;
     font-weight: 600;
 }
@@ -151,10 +165,10 @@ body {
 .login-button {
     width: 100%;
     padding: 14px;
-    background: #2563eb;
+    background: linear-gradient(135deg, #4c6e32 0%, #8bac47 100%);
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
@@ -162,17 +176,19 @@ body {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    transition: background 0.3s;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(139, 172, 71, 0.4);
 }
 
 .login-button:hover {
-    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 172, 71, 0.5);
 }
 
 .login-footer {
     text-align: center;
     padding-top: 24px;
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid #e2e8f0;
     color: #6b7280;
     font-size: 12px;
 }
@@ -186,12 +202,13 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background: linear-gradient(to bottom, #f8f9fa 0%, #e9f0e5 100%);
 }
 
 .top-nav {
-    background: white;
-    border-bottom: 1px solid #e5e7eb;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #4c6e32 0%, #5d8337 100%);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #8bac47;
 }
 
 .nav-container {
@@ -212,18 +229,18 @@ body {
 .nav-logo {
     width: 40px;
     height: 40px;
-    color: #2563eb;
+    color: #d4e157;
 }
 
 .nav-brand h1 {
     font-size: 18px;
     font-weight: 700;
-    color: #1f2937;
+    color: white;
 }
 
 .nav-brand p {
     font-size: 13px;
-    color: #6b7280;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .nav-actions {
@@ -236,13 +253,14 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: #f3f4f6;
+    background: rgba(255, 255, 255, 0.15);
     padding: 8px 16px;
-    border-radius: 8px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
 }
 
 .nav-user svg {
-    color: #6b7280;
+    color: #d4e157;
     width: 20px;
     height: 20px;
 }
@@ -250,7 +268,7 @@ body {
 .nav-user span {
     font-size: 14px;
     font-weight: 600;
-    color: #374151;
+    color: white;
 }
 
 .logout-btn {
@@ -258,18 +276,20 @@ body {
     align-items: center;
     gap: 8px;
     padding: 10px 20px;
-    background: #ef4444;
+    background: #dc3545;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.3s;
 }
 
 .logout-btn:hover {
-    background: #dc2626;
+    background: #c82333;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
 }
 
 .logout-btn svg {
@@ -285,31 +305,49 @@ body {
 }
 
 .page-header {
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    background: linear-gradient(135deg, #4c6e32 0%, #6d9138 100%);
     color: white;
     padding: 32px;
-    border-radius: 12px;
+    border-radius: 16px;
     margin-bottom: 24px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(76, 110, 50, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: url('background/back1.JPG') center center / cover no-repeat;
+    opacity: 0.15;
+    border-radius: 50%;
 }
 
 .page-header.admin {
-    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+    background: linear-gradient(135deg, #5d8337 0%, #7aa83f 100%);
 }
 
 .page-header.farmer {
-    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    background: linear-gradient(135deg, #4c6e32 0%, #6d9138 100%);
 }
 
 .page-header h1 {
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
 }
 
 .page-header p {
     font-size: 14px;
-    opacity: 0.9;
+    opacity: 0.95;
+    position: relative;
+    z-index: 1;
 }
 
 .stats-grid {
@@ -322,15 +360,21 @@ body {
 .stat-card {
     background: white;
     padding: 24px;
-    border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     border-left: 4px solid;
+    transition: all 0.3s;
 }
 
-.stat-card.blue { border-left-color: #2563eb; }
-.stat-card.green { border-left-color: #059669; }
-.stat-card.red { border-left-color: #ef4444; }
-.stat-card.purple { border-left-color: #7c3aed; }
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.stat-card.blue { border-left-color: #5d8337; }
+.stat-card.green { border-left-color: #8bac47; }
+.stat-card.red { border-left-color: #dc3545; }
+.stat-card.purple { border-left-color: #7aa83f; }
 .stat-card.orange { border-left-color: #f59e0b; }
 
 .stat-header {
@@ -345,21 +389,24 @@ body {
     height: 32px;
 }
 
-.stat-icon.blue { color: #2563eb; }
-.stat-icon.green { color: #059669; }
-.stat-icon.red { color: #ef4444; }
-.stat-icon.purple { color: #7c3aed; }
+.stat-icon.blue { color: #5d8337; }
+.stat-icon.green { color: #8bac47; }
+.stat-icon.red { color: #dc3545; }
+.stat-icon.purple { color: #7aa83f; }
 .stat-icon.orange { color: #f59e0b; }
 
 .stat-label {
     font-size: 12px;
     color: #6b7280;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 .stat-value {
     font-size: 36px;
     font-weight: 700;
-    color: #1f2937;
+    color: #2d3748;
     margin-bottom: 4px;
 }
 
@@ -370,8 +417,8 @@ body {
 
 .card {
     background: white;
-    border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     padding: 24px;
     margin-bottom: 24px;
 }
@@ -381,12 +428,14 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #f7fafc;
 }
 
 .card-title {
     font-size: 20px;
     font-weight: 700;
-    color: #1f2937;
+    color: #2d3748;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -395,13 +444,13 @@ body {
 .card-title svg {
     width: 24px;
     height: 24px;
-    color: #2563eb;
+    color: #6d9138;
 }
 
 .btn {
     padding: 10px 20px;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
@@ -417,30 +466,33 @@ body {
 }
 
 .btn-primary {
-    background: #2563eb;
+    background: linear-gradient(135deg, #4c6e32 0%, #8bac47 100%);
     color: white;
+    box-shadow: 0 2px 8px rgba(139, 172, 71, 0.3);
 }
 
 .btn-primary:hover {
-    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 172, 71, 0.4);
 }
 
 .btn-success {
-    background: #059669;
+    background: #8bac47;
     color: white;
 }
 
 .btn-success:hover {
-    background: #047857;
+    background: #7a9b3d;
+    transform: translateY(-1px);
 }
 
 .btn-danger {
-    background: #ef4444;
+    background: #dc3545;
     color: white;
 }
 
 .btn-danger:hover {
-    background: #dc2626;
+    background: #c82333;
 }
 
 .btn-secondary {
@@ -451,30 +503,6 @@ body {
 .btn-secondary:hover {
     background: #4b5563;
 }
-
-.table-container {
-    overflow-x: auto;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-thead {
-    background: #f9fafb;
-}
-
-th {
-    padding: 12px 16px;
-    text-align: left;
-    font-size: 12px;
-    font-weight: 600;
-    color: #6b7280;
-    text-transform: uppercase;
-    border-bottom: 2px solid #e5e7eb;
-}
-
 td {
     padding: 16px;
     border-bottom: 1px solid #e5e7eb;
@@ -1017,3 +1045,112 @@ select:focus {
     outline: none;
     border-color: #2563eb;
 }
+/* Veterinarian-specific styles */
+.page-header.vet {
+    background: linear-gradient(135deg, #7c3aed 0%, #9333ea 100%);
+}
+
+.alert-item {
+    padding: 20px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    transition: all 0.3s;
+}
+
+.alert-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.alert-item.critical {
+    border-left: 4px solid #ef4444;
+    background: #fef2f2;
+}
+
+.alert-item.warning {
+    border-left: 4px solid #f59e0b;
+    background: #fffbeb;
+}
+
+.alert-item.unread {
+    background: #eff6ff;
+    border-left: 4px solid #3b82f6;
+}
+
+.alert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.alert-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 4px;
+}
+
+.alert-farm {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0;
+}
+
+.alert-meta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.alert-body p {
+    margin-bottom: 16px;
+    color: #374151;
+    line-height: 1.6;
+}
+
+.alert-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.alert-footer small {
+    color: #6b7280;
+}
+
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 13px;
+}
+
+.vet-response {
+    margin-top: 16px;
+    padding: 16px;
+    background: #f0fdf4;
+    border-left: 4px solid #22c55e;
+    border-radius: 8px;
+}
+
+.vet-response strong {
+    color: #166534;
+}
+
+.vet-response p {
+    margin: 8px 0;
+    color: #166534;
+}
+
+.vet-response small {
+    color: #16a34a;
+    font-size: 12px;
+}
+
+/* Teams table */
+.table-container table tr:hover {
+    background: #f9fafb;
+}
+

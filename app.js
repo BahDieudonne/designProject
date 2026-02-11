@@ -28,6 +28,10 @@ function initializeSystem() {
         localStorage.setItem('alerts', JSON.stringify([]));
     }
     
+    if (!localStorage.getItem('teams')) {
+        localStorage.setItem('teams', JSON.stringify([]));
+    }
+    
     // Initialize IndexedDB for large files
     initializeIndexedDB();
 }
@@ -35,6 +39,7 @@ function initializeSystem() {
 // Initialize IndexedDB for storing farm media
 let db;
 function initializeIndexedDB() {
+    console.log('Initializing IndexedDB...');
     const request = indexedDB.open('PoultrySystemDB', 1);
     
     request.onerror = function(event) {
@@ -43,15 +48,18 @@ function initializeIndexedDB() {
     
     request.onsuccess = function(event) {
         db = event.target.result;
+        window.db = db; // Make it globally accessible
         console.log('IndexedDB initialized successfully');
     };
     
     request.onupgradeneeded = function(event) {
+        console.log('IndexedDB upgrade needed - creating object stores');
         db = event.target.result;
+        window.db = db;
         
         // Create object store for farm media
         if (!db.objectStoreNames.contains('farmMedia')) {
-            const objectStore = db.objectStore = db.createObjectStore('farmMedia', { keyPath: 'farmId' });
+            db.createObjectStore('farmMedia', { keyPath: 'farmId' });
             console.log('Created farmMedia object store');
         }
     };
@@ -59,8 +67,10 @@ function initializeIndexedDB() {
 
 // Save farm media to IndexedDB
 function saveFarmMedia(farmId, mediaData, mediaType) {
+    console.log('Saving farm media for farmId:', farmId);
     return new Promise((resolve, reject) => {
         if (!db) {
+            console.error('Database not initialized');
             reject('Database not initialized');
             return;
         }
@@ -75,13 +85,16 @@ function saveFarmMedia(farmId, mediaData, mediaType) {
             timestamp: new Date().toISOString()
         };
         
+        console.log('Media object created, saving to IndexedDB...');
         const request = objectStore.put(media);
         
         request.onsuccess = function() {
+            console.log('Farm media saved successfully for farmId:', farmId);
             resolve(true);
         };
         
         request.onerror = function() {
+            console.error('Error saving farm media:', request.error);
             reject(request.error);
         };
     });
@@ -89,8 +102,10 @@ function saveFarmMedia(farmId, mediaData, mediaType) {
 
 // Get farm media from IndexedDB
 function getFarmMedia(farmId) {
+    console.log('Getting farm media for farmId:', farmId);
     return new Promise((resolve, reject) => {
         if (!db) {
+            console.error('Database not initialized when getting media');
             reject('Database not initialized');
             return;
         }
@@ -100,10 +115,12 @@ function getFarmMedia(farmId) {
         const request = objectStore.get(farmId);
         
         request.onsuccess = function() {
+            console.log('getFarmMedia result:', request.result ? 'Found' : 'Not found');
             resolve(request.result);
         };
         
         request.onerror = function() {
+            console.error('Error getting farm media:', request.error);
             reject(request.error);
         };
     });
