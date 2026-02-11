@@ -515,7 +515,7 @@ function saveSystemConfig() {
     showToast('System configuration saved successfully', 'success');
 }
 
-// Load system configuration
+// Load system configuration...
 function loadSystemConfig() {
     const config = JSON.parse(localStorage.getItem('systemConfig') || '{}');
     
